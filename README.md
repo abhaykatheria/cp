@@ -25,3 +25,19 @@ int MissingNumber(int arr[], int size){
 }
 
 ```
+#### itertools in python to generate combinations
+
+```
+## Read input as specified in the question.
+## Print output as specified in the question.
+import itertools
+n= int(input())
+arr=[int(x) for x in input().split()]
+aa = int(input())
+lis =  list(itertools.combinations(arr,3))
+
+for x in lis:
+    if sum(x) == aa:
+        temp = sorted(x)
+        print(str(temp[0])+" "+str(temp[1])+" "+str(temp[2]))
+```
