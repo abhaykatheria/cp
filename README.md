@@ -41,3 +41,6 @@ for x in lis:
         temp = sorted(x)
         print(str(temp[0])+" "+str(temp[1])+" "+str(temp[2]))
 ```
+#### longest consecutive sequence is a bitch
+
+```
