@@ -131,6 +131,13 @@ int main()
 
 ```
 ***
+### inversion count
+
+basic inversion count can be implemented via bruteforce but that takes order of n2 time we can bring that to nlogn by using the
+logic of merge sort basically any test cases which are above 10^5 and have n2 time complexity will 10^10 time usually 10^8  is the
+limit allowed by most judges. 
+>Some question where we can divide the problem into sub problems can be solved by mergeSort logic maybe.
+
 ```
 void merge(long long arr[], long long l, long long m, long r,long long * count) 
 { 
