@@ -217,3 +217,64 @@ long long solve(long long A[], long long n)
     cout<<*count;
 }
 ```
+***
+#### Chef's restaurant using map its not a good solution but it works locally....:P
+the input array size was 10^5 larfe so On^2 was out of option so i used maps as they use red black tree in which searching is in
+logn so that makes this complexity mlogn.
+[https://www.codechef.com/submit/CHEFRES]
+````
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int t;
+	cin>>t;
+	while(t--)
+	{
+	    long n,m;
+	    cin>>n>>m;
+	    long long arr,dept;
+	    map<long long,long long> intervals;
+	    for(long i=0;i<n;i++)
+	    {
+	        cin>>arr>>dept;
+	        intervals[arr]=dept;
+	    }
+
+	    long long person[m];
+
+	    for(long i=0;i<m;i++)
+	    {
+	    cin>>person[i];
+	    }
+	    map<long long , long long>::iterator it,temp;
+	    for(long i=0;i<m;i++)
+	    {
+	       it=intervals.lower_bound(person[i]);
+	       temp = it;
+           temp--;
+	       if(it->first==person[i])
+	       {
+                std::cout << 0 << std::endl;
+	       }
+	       if(it->first>person[i])
+	       {
+
+	           if(temp->second>person[i] && temp->first<person[i])
+	           {
+	               std::cout << 0 << std::endl;
+	           }
+	           else if(it->first-person[i]<128849018849)
+	            cout<<it->first-person[i]<<endl;
+	           else
+	           cout<<-1<<endl;
+
+	       }
+	    }
+
+	}
+	return 0;
+}
+```
+
