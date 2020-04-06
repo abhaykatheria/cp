@@ -222,7 +222,8 @@ long long solve(long long A[], long long n)
 the input array size was 10^5 larfe so On^2 was out of option so i used maps as they use red black tree in which searching is in
 logn so that makes this complexity mlogn.
 [https://www.codechef.com/submit/CHEFRES]
-````
+
+```
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -276,5 +277,52 @@ int main() {
 	}
 	return 0;
 }
+
+```
+***
+### variation from 2015 [zonal olympiad codechef](https://www.codechef.com/ZCOPRAC/problems/ZCO15002)
+This was awsome question it can be solved with 3 different approaches first one is brute force obviously. we can also do the binary search on the sorted array and find the minimum index for which variation>=k nlogn approach. But we can also use **2 pointer approach to get it in linear time but sorting will take nlogn so total complexity will be nlogn only :P.
+
+```
+#include <bits/stdc++.h>
+#include<iostream>
+
+#include<algorithm>
+int main(void) {
+	// your code goes here
+    long long n,k;
+    std::cin>>n>>k;
+    long long arr[n];
+    for(long long i=0; i<n;i++)
+    std::cin>>arr[i];
+
+    std::sort(arr,arr+n);
+
+    long long i,j;
+    i=0;
+    j=0;
+    long long count = 0;
+    while(j<n)
+    {
+        if(i==j)
+        j++;
+        if(arr[j]-arr[i]>=k)
+        {
+        count+=n-j;
+        i++;
+        continue;}
+        else j++;
+
+    }
+
+    std::cout << count;
+
+
+	return 0;
+
+
+
+}
+
 ```
 
