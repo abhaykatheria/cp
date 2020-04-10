@@ -325,4 +325,83 @@ int main(void) {
 }
 
 ```
+***
+## Backtracking
+#### nine queens palcing problem
 
+
+```
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int arr[11][11];
+
+bool possible(int n, int row , int col)
+{
+    //check col
+    for(int i=0;i<row;i++)
+        if(arr[i][col]==1)
+            return false;
+    int i,j;
+    
+    //check left diagonal
+    for(i=row-1,j=col-1;i>=0&&j>=0;i--,j--)
+        if(arr[i][j]==1)
+            return false;
+    //check right diagonal
+    for(i=row-1,j=col+1;j<n,i>=0;j++,i--)
+        if(arr[i][j]==1)
+            return false;
+	    
+    return true;
+}
+
+void nqueenHelper(int n , int row)
+{
+    cout<<row<<endl;
+    //cout<<"inside nqueen helper "<<row<<endl;
+    if(row==n)
+    {
+        for(int i=0;i<n;i++)
+        {
+                for(int j=0;j<n;j++)
+                cout<<arr[i][j]<<" ";
+
+        }
+         cout<<endl;
+         return;
+    }
+
+    for(int col=0;col<n;col++)
+    {
+        if(possible(n,row,col))
+        {
+            arr[row][col]=1;
+            nqueenHelper(n,row+1);
+            arr[row][col]=0;
+        }
+    }
+    return;
+}
+
+void nqueen(int n)
+{
+    memset(arr,11*11,sizeof(int));
+    nqueenHelper(n,0);
+}
+
+
+int main()
+{
+    int n;
+    cin>>n;
+    nqueen(n);
+}
+```
+- place yourself at the starting point
+- now we have to explore the entire matrix
+- loop through current row
+- check if the location is possible
+- if yes then move to the row below check all its postion and so on
+- if you reach the last row then print the solution otherwise backtrack
