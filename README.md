@@ -458,3 +458,90 @@ int main()
 }
 
 ```
+
+#### sudoku solver
+
+```
+    #include<bits/stdc++.h>
+    #include<math.h>
+    using namespace std;
+    int arr[9][9];
+
+
+    bool possible(int x , int row , int col)
+    {
+        //check row
+        for(int i=0;i<=8;i++)
+            if(arr[row][i]==x)
+                return false;
+        //check col
+        for(int i=0;i<=8;i++)
+            if(arr[i][col]==x)
+                return false;
+        //check box
+        int t,u;
+
+        t=row-(row%3);
+        u=col-(col%3);
+        for(int i=t;i<=t+3;i++)
+            for(int j=u;j<=u+3;j++)
+                if(arr[i][col]==x)
+                return false;
+        return true;
+
+    }
+    std::pair<int,int> findEmpty()
+    {
+        pair<int,int> p;
+        for(int i=0;i<=8;i++)
+            for(int j=0;j<=8;j++)
+                if(arr[i][j]==0)
+                    {p.first=i;p.second=j;return p;}
+        p.first=-1;
+        p.second=-1;
+        return p;
+    }
+    bool solveSudoku()
+    {
+        pair<int,int> p;
+        p=findEmpty();
+        if(p.first==-1)
+            return true;
+        else{
+            for(int i=1;i<=9;i++)
+                if(possible(i,p.first,p.second))
+            {
+                arr[p.first][p.second]=i;
+                if(solveSudoku())
+                {
+                    return true;
+                }
+                else
+                    arr[p.first][p.second]=0;
+            }
+
+        }
+        return false;
+
+    }
+
+
+    int main()
+    {
+        char temp[9][9];
+        for(int i=0;i<=8;i++)
+        cin>>temp[i];
+        for(int i=0;i<=8;i++)
+            for(int j=0;j<=8;j++)
+            arr[i][j]=int(temp[i][j])-48;
+
+        bool t = solveSudoku();
+
+        for(int i=0;i<=8;i++)
+            {
+                for(int j=0;j<=8;j++)
+                cout<<arr[i][j];
+                cout<<endl;
+                }
+    }
+```
