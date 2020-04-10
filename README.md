@@ -405,3 +405,56 @@ int main()
 - check if the location is possible
 - if yes then move to the row below check all its postion and so on
 - if you reach the last row then print the solution otherwise backtrack
+
+
+#### rat in a maze
+
+```
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int arr[20][20];
+int sol[20][20];
+
+void rat(int n,int row, int col)
+{
+    /*
+    so we have this recursive function first we check our constraints
+    */		
+    //cout<<"inside rat "<<row<<" "<<col<<endl;
+    if(row>=n || col>=n || arr[row][col]==0 || row<0 || col<0 || sol[row][col]==1)
+        return;
+    if(row==n-1 && col==n-1)
+    {
+        sol[row][col]=1;
+        for(int i=0;i<n;i++)
+        for(int j=0;j<n;j++)
+            cout<<sol[i][j]<<" ";
+        cout<<endl;
+        sol[row][col]=0;
+        return;
+    }
+    sol[row][col]=1;
+    rat(n,row-1,col);
+    rat(n,row+1,col);
+    rat(n,row,col-1);
+    rat(n,row,col+1);
+    sol[row][col]=0;
+    return;
+}
+
+
+int main()
+{
+    int n;cin>>n;
+    memset(arr,20*20,sizeof(int));
+    memset(sol,20*20,sizeof(int));
+    for(int i=0;i<n;i++)
+        for(int j=0;j<n;j++)
+            cin>>arr[i][j];
+    rat(n,0,0);
+
+}
+
+```
