@@ -629,4 +629,255 @@ int clearAllBits(int n, int i){
 }
 ```
 
+***
+
+# awesome sudoku code
+```
+
+
+bool isEmpty(int board[][9],int &row, int &col)
+{
+    for(int i=0;i<=8;i++)
+            for(int j=0;j<=8;j++)
+                if(board[i][j]==0)
+                {
+                    row=i;
+                    col=j;
+                    return true;
+                }
+    return false;
+}
+bool possible(int board[][9],int x ,int row, int col)
+{
+    //check the row
+    for(int i=0;i<=8;i++)
+        if(board[row][i]==x)
+            return false;
+    //check the column
+    for(int i=0;i<=8;i++)
+        if(board[i][col]==x)
+            return false;
+    //check the box
+    int t= row - (row%3);
+    int u=col-(col%3);
+    for(int i=t;i<t+3;i++)
+            for(int j=u;j<u+3;j++)
+                if(board[i][col]==x)
+                    return false;
+    
+	return true;
+}
+void printSudoku(int board[][9])
+{
+    for(int i=0;i<=8;i++)
+    {
+            for(int j=0;j<=8;j++)
+			cout<<board[i][j]<<" ";
+        cout<<endl;
+    }
+    cout<<endl;
+}
+bool sudokuSolver(int board[][9]){
+
+  /* Don't write main().
+   *  Don't read input, it is passed as function argument.
+   *  Don't print output and return output as specified in the question
+  */
+	int row,col;
+    if(!isEmpty(board,row,col))
+    {
+
+        return true;
+    }
+    else{
+    
+        for(int i=1;i<10;i++)
+    {
+        if(possible(board,i,row,col))
+        {
+            board[row][col]=i;
+            if(sudokuSolver(board))
+            {
+                return true;
+            }
+            board[row][col]=0;
+        }
+    }
+    return false;
+}
+    
+}
+```
+***
+## Adhoc problems
+
+### codeforces (Equalize)[https://codeforces.com/problemset/problem/1037/C] adhoc awesome problem 
+learnt alot from this problem
+
+```
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int main(){
+
+    long long  n;cin>>n;
+    char a[n],b[n];
+
+    for(int i=0;i<n;i++)
+    cin>>a[i];
+
+    for(int i=0;i<n;i++)
+    cin>>b[i];
+
+    long cost=0;
+
+    for(int i=0;i<n;i++)
+    {
+        if(a[i]==b[i])
+            continue;
+        if(a[i]!=a[i+1]&& a[i+1]!=b[i+1])
+        {swap(a[i],a[i+1]);cost++;}
+        else{
+            if(a[i]=='0')
+                a[i]='1';
+            else
+                a[i]='0';
+            cost++;
+        }
+    }
+    cout<<cost;
+}
+```
+### light up the bulbs
+in this problem we have to find the min cost again we just found the groups of continuous zro grouped them together and fliped the last one. The approach was not to waste time in actually looping througha rray and getting substrings. that is also needed sometime but not everywhere.
+
+```
+
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    
+    long long n,x,y;cin>>n>>x>>y;
+    char arr[n];
+    for(int i=0;i<n;i++)
+        cin>>arr[i];
+    
+    long long groups = 0;
+    if(arr[0]=='0')groups++;
+    for(int i=0;i<n-1;i++)
+    {
+        if(( arr[i]=='1' && arr[i+1]=='0' ) )
+    		groups++;
+    }
+    if(groups>0)
+    {long long cost = ((groups-1)*min(x,y) )+ y;
+     cout<<cost;}
+    else if (groups == 0  && arr[0]=='0')
+        cout<<y;
+    else
+        cout<<0;
+    
+    
+	return 0;
+}
+```
+
+### interesting sequence
+the problem was to make all the no. same of given array through some operation keeping the cost minimum. Since constraints were low so brute force was available
+we looped through aal the no.s that can be possible soln and checked the cost of converting all the no.s to that then printed it out
+>> cost=k*(dec) + l*(inc-dec);
+```
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    int n,k,l;cin>>n>>k>>l;
+    
+    int arr[n];
+    
+    for(int i=0;i<n;i++)
+        cin>>arr[i];
+    
+    sort(arr,arr+n);
+    
+    int min=arr[0];
+    int max=arr[n-1];
+    long long cost;
+    long long  ans =1000000;
+    for(int i=min;i<=max;i++)
+    {
+        cost=0;
+        long  long dec=0;
+        long long inc=0;
+        for(int j=0;j<n;j++)
+        {
+            if(arr[j]>i)
+                dec+=(arr[j]-i);
+            else{
+                inc+=(i-arr[j]);
+            }
+            cost=k*(dec) + l*(inc-dec);
+        }
+       if(cost==0)
+           ans=0;
+        
+       else if(cost<ans && cost>0)
+            ans=cost;
+	}
+	cout<<ans;
+}
+```
+
+### winning strategy
+make array of 123 to n to the given array in minimum no. of swaping ops guven some condn on swapping 
+in this we did have to work on the array but we approached the question in reverse manner converting given array to 12345
+
+```
+#include<bits/stdc++.h>
+using namespace std;
+int main() {
+
+	// Write your code here
+    long n;cin>>n;
+    long arr[n];
+    for(int i=0;i<n;i++)
+        cin>>arr[i];
+    long ts=0;
+    for(int i=n-1;i>=0;i--)
+    {
+        if(arr[i]==i+1)
+        {
+            continue;
+        }
+        if(arr[i-1]==i+1)
+        {
+            swap(arr[i-1],arr[i]);
+            ts++;
+            continue;
+        }
+        if(arr[i-2]==i+1)
+        {
+            arr[i-2]=arr[i-1];
+            arr[i-1]=arr[i];
+            arr[i]=i+1;
+            ts++;ts++;
+            continue;
+        }
+        else
+        {
+            cout<<"NO";
+            return 0;
+        }
+    }
+    cout<<"YES"<<endl<<ts;
+        
+        
+    
+}
+```
+
 
