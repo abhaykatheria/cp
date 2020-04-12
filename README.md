@@ -545,3 +545,88 @@ int main()
                 }
     }
 ```
+
+***
+## bit manipulation
+-
+```
+int turnOnIthBit(int n, int i){
+    /* Don't write main().
+     * Don't read input, it is passed as function argument.
+     * Return output and don't print it.
+     * Taking input and printing output is handled automatically.
+     */
+    
+	int a = 1<<i;
+    return n|a;
+}
+```
+-
+```
+int turnOffIthBit(int n, int i){
+    /* Don't write main().
+     * Don't read input, it is passed as function argument.
+     * Return output and don't print it.
+     * Taking input and printing output is handled automatically.
+     */
+    int a = ~(1<<i);
+    return n&a;
+}
+```
+-
+
+```
+#include<bits/stdc++.h>
+int returnFirstSetBit(int n){
+    /* Don't write main().
+     * Don't read input, it is passed as function argument.
+     * Return output and don't print it.
+     * Taking input and printing output is handled automatically.
+     */
+    if(n==0)
+        return 0;
+    int pos = ffs(n);
+    return 1<<pos-1;
+    
+}
+```
+
+- 
+
+```
+#include<bits/stdc++.h>
+int turnOffFirstSetBit(int n){
+    /* Don't write main().
+     * Don't read input, it is passed as function argument.
+     * Return output and don't print it.
+     * Taking input and printing output is handled automatically.
+     */
+    
+    if(n==0)
+        return 0;
+    int pos = ffs(n);
+    int a = 1<<pos-1;
+    return n&~a;
+}
+
+```
+-
+
+```
+int clearAllBits(int n, int i){
+    /* Don't write main().
+     * Don't read input, it is passed as function argument.
+     * Return output and don't print it.
+     * Taking input and printing output is handled automatically.
+     */
+	//create mask
+    if(n==0)
+        return 0;
+    int a = 1<<i; // mask making
+    a=a-1;
+    return a&n;
+
+}
+```
+
+
