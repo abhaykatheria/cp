@@ -1,0 +1,24 @@
+#Histogram
+def histogram(hist):
+    stack = list()
+    max_area,index = 0,0
+    while(index<len(hist)):
+        if not stack or (hist[stack[-1]]<=hist[index]):
+            stack.append(index)
+            index += 1
+        else:
+            print(stack)
+            top = stack.pop()
+            area = hist[top]*((index-stack[-1]-1) if stack else index)
+            print(area)
+            max_area = max(area,max_area)
+    while stack:
+        print(stack)
+        top = stack.pop()
+        area = hist[top]*((index-stack[-1]-1) if stack else index)
+        print(area)
+        max_area = max(area,max_area)
+    return(max_area)
+
+hist = [3,1,6,4,5,2]
+print(histogram(hist))

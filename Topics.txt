@@ -1,0 +1,69 @@
+Coding & DSA
+1 - Subarray with a given sum / Numbers of Subarrays with a given sum
+2 - Number of subarray divisible by 'k' / Number of pairs divisible by 'k'
+3 - kth largest number
+4 - Largest element in k size window (Deque Solution)
+5 - All sorting techniques (Merge Sort, Quick Sort, Count Sort, Radix Sort, Insertion Sort, Selection Sort,Bubble Sort)
+6 - Rain Water Problem 
+7 - Largest Rectangle in a histogram 
+8 - Kadane
+9 - Missing Number / Repeated Number (No extra space)
+10 - Largest Number formed ( [1,23,9,98,7] = 9987231 )
+11 - Stock Buy and Sell (Greedy)
+12 - Next Largest Number (Stack Solution)
+13 - Largest window of contiguous 1's , k swaps allowed (Binary string is given)
+14 - MinStack 
+15 - Stack using queue / Queue using stack 
+16 - Stack and queue using linked list 
+17 - Find a number in rotated sorted array ( [1,2,3,4,5,6] -> [5,6,1,2,3,4], find 3 in this in log(n) time)
+
+Linked List 
+
+18 - Sorting of Linked List 
+19 - Find the cycle and remove it (O(n) solution)
+20 - kth node from the end of the linked list
+21 - Reverse a linked list and doubly linked list (Iterative and recursive both)
+22 - Josephus Problem
+
+Binary Tree and BST 
+
+23 - Preorder, Inorder, Postorder, Level order traversal (Iterative and recursive)
+24 - Left,Right,Top,Bottom,Vertical,Diagonal View of a tree(Iterative and recursive)
+25 - All Root to leaf paths
+26 - Height of tree, Minimum Depth of a tree
+27 - Find a path with a given sum
+28 - Diameter of the tree
+29 - LCA of the two nodes in Tree
+30 - Minimum distance between two nodes (Use LCA)
+31 - Nodes at a given level 
+
+Graphs
+
+32 - BFS , DFS 
+33 - Number of Connected Components ( Also find all the connected components and store and print them)
+34 - Snakes and Ladders
+35 - Topological Sort 
+36 - Prims and Kruksal (Concept only)
+37 - Bellman Ford, Floyd Warshall ( Concept only)
+38 - Dijsktras
+
+Miscellaneous
+
+39 - Median of a running stream (Max heap and Min heap)
+40 - First non repeating character of a running stream ( Queue and map)
+41 - K largest/smallest elemnts in an array (Sorting not allowed, Use max or min heap)
+
+Language Specific
+
+42 - Memory management
+43 - Garbage collection
+44 - Internal implementation of DS (map,vector,etc..)
+45 - OOPs ( Knowledge about five fundamentals and know how to write a class with some methods)
+46 - Generator functions, Lambda Functions, decorators (Python specific)
+
+React Js
+
+47 - What is dom ?
+48 - Virtual dom and how it is different from DOM 
+49 - React Redux , React Router
+50 - Components, props, states (basic definition)
